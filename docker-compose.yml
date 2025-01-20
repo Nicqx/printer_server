@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  cups:
+    build:
+      context: .
+    container_name: cups_server
+    restart: always
+    ports:
+      - "631:631"
+    devices:
+      - "/dev/usb/lp0:/dev/usb/lp0" # Az USB elérhetősége a konténeren belül
+    privileged: true
+    volumes:
+      - cups_data:/etc/cups
+      - cups_log:/var/log/cups
+      - cups_spool:/var/spool/cups
+
+volumes:
+  cups_data:
+  cups_log:
+  cups_spool:
+
