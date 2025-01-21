@@ -11,6 +11,7 @@ services:
     devices:
       - "/dev/usb/lp0:/dev/usb/lp0" # Az USB elérhetősége a konténeren belül
     privileged: true
+    network_mode: "host"
     volumes:
       - cups_data:/etc/cups
       - cups_log:/var/log/cups
